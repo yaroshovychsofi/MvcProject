@@ -1,0 +1,67 @@
+---
+# Mega-Linter config for Swift/iOS project
+CLEAR_REPORT_FOLDER: true
+PRINT_ALL_FILES: true
+
+# Validate only changed files on PRs to reduce noise
+VALIDATE_ALL_CODEBASE: false
+DEFAULT_BRANCH: main
+
+# Disable linters we don't need for a pure Swift project
+DISABLE_LINTERS:
+  - JAVASCRIPT_ES
+  - TYPESCRIPT_ES
+  - JSX_A11Y_ESLINT
+  - JAVASCRIPT_STANDARD
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  - REPOSITORY_CHECKOV
+  - REPOSITORY_GRYPE
+  - REPOSITORY_KICS
+  - REPOSITORY_TRIVY
+  - REPOSITORY_TRUFFLEHOG
+  - TERRAFORM_TERRASCAN
+  - TERRAFORM_TERRAFORM_FMT
+  - TERRAFORM_TFLINT
+  - SPELL_CSPELL
+  - SPELL_LYCHEE
+
+# Enable Swift and common text linters
+ENABLE_LINTERS:
+  - SWIFT_SWIFTLINT
+  - SWIFT_SWIFTFORMAT
+  - YAML_YAMLLINT
+  - MARKDOWN_MARKDOWNLINT
+  - EDITORCONFIG_EDITORCONFIG
+  - REPOSITORY_GITLEAKS
+  - COPYPASTE_JSCPD
+
+# Reduce CI failures from advisory tools; keep them visible in reports
+COPYPASTE_JSCPD_DISABLE_ERRORS: true
+REPOSITORY_GITLEAKS_DISABLE_ERRORS: true
+MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS: true
+YAML_YAMLLINT_DISABLE_ERRORS: false
+
+# SwiftLint/SwiftFormat config files (if present)
+SWIFT_SWIFTLINT_CONFIG_FILE: .swiftlint.yml
+SWIFT_SWIFTFORMAT_CONFIG_FILE: .swiftformat
+
+# Ignore typical Xcode build outputs and dependencies
+FILTER_REGEX_EXCLUDE:
+  - ".*\/DerivedData\/.*"
+  - ".*\/build\/.*"
+  - ".*\/Build\/.*"
+  - ".*\.xcodeproj\/.*"
+  - ".*\.xcworkspace\/.*"
+  - ".*\/Pods\/.*"
+  - ".*\/Carthage\/.*"
+  - ".*\/fastlane\/report.xml"
+
+# Optional: Run Swift Package resolve before lint to ensure tools can load packages
+PRE_COMMANDS:
+  - command: swift package resolve
+    continue_if_failed: true
+# Formatting preferences for SwiftFormat (if using)
+SWIFT_SWIFTFORMAT_ARGUMENTS: "--swiftversion 6 --allman false --indent 4 --self remove"
+
+# JS/TS settings removed since this is not a React Native project
+

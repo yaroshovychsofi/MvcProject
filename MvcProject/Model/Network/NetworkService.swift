@@ -12,15 +12,13 @@ class NetworkService: NetworkServiceProtocol {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
             let success = Bool.random()
             if success {
-                let rate = ExchangeRate(from: "USD",
-                                        to: "UAH",
+                let rate = ExchangeRate(fromCurrency: "USD",
+                                        toCurrency: "UAH",
                                         rate: Double.random(in: 40.0...45.0))
                 DispatchQueue.main.async {
                     completion(.success(rate))
                 }
-
-            }
-            else {
+            } else {
                 DispatchQueue.main.async {
                     completion(.failure(NetworkError.serverError))
                 }

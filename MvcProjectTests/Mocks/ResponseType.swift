@@ -6,7 +6,6 @@
 //
 @testable import MvcProject
 
-
 enum ResponseType {
     case success(ExchangeRate)
     case failure(Error)

@@ -11,21 +11,20 @@ import Foundation
 class NetworkServiceMock: NetworkServiceProtocol {
     var response: ResponseType
     var fetchRateCalled: Bool = false
-    
+
     init(response: ResponseType) {
         self.response = response
     }
+
     func fetchRate(completion: @escaping (Result<MvcProject.ExchangeRate, any Error>) -> Void) {
         fetchRateCalled = true
         DispatchQueue.main.async {
             switch self.response {
-            case .success(let rate):
+            case let .success(rate):
                 completion(.success(rate))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
     }
-    
-    
 }
