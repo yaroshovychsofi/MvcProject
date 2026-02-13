@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		125772042F3D09660013FEB4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 125772032F3D09660013FEB4 /* SnapKit */; };
+		1293C18C2F3F202000BB6EAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1293C18B2F3F202000BB6EAF /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		125771BD2F3CEBC50013FEB4 /* MvcProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MvcProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125771D32F3CEBC60013FEB4 /* MvcProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MvcProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		125771DD2F3CEBC60013FEB4 /* MvcProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MvcProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1293C18B2F3F202000BB6EAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -97,6 +99,7 @@
 				125771D62F3CEBC60013FEB4 /* MvcProjectTests */,
 				125771E02F3CEBC60013FEB4 /* MvcProjectUITests */,
 				125771BE2F3CEBC50013FEB4 /* Products */,
+				1293C18B2F3F202000BB6EAF /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,7 +123,7 @@
 				125771B92F3CEBC50013FEB4 /* Sources */,
 				125771BA2F3CEBC50013FEB4 /* Frameworks */,
 				125771BB2F3CEBC50013FEB4 /* Resources */,
-				1257720C2F3DE0DF0013FEB4 /* ShellScript */,
+				1293C18A2F3F1ED300BB6EAF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1293C18C2F3F202000BB6EAF /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +259,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1257720C2F3DE0DF0013FEB4 /* ShellScript */ = {
+		1293C18A2F3F1ED300BB6EAF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -271,7 +275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/swiftlint\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  cd \"${SRCROOT}\"\n  swiftlint --config .swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

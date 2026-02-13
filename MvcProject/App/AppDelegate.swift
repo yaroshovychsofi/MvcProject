@@ -3,6 +3,7 @@
 //  MvcProject
 //
 //  Created by Софія Ярошович on 11.02.2026.
+//  Copyright © 2026 MVPProject. All rights reserved.
 //
 
 import UIKit
@@ -38,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after
-        // application:didFinishLaunchingWithOptions.
+        // Application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }

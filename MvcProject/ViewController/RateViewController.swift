@@ -3,6 +3,7 @@
 //  MvcProject
 //
 //  Created by Софія Ярошович on 11.02.2026.
+//  Copyright © 2026 MVPProject. All rights reserved.
 //
 import UIKit
 import SnapKit
@@ -10,14 +11,6 @@ import SnapKit
 class RateViewController: UIViewController {
     private let service: NetworkServiceProtocol
 
-    init(service: NetworkServiceProtocol) {
-        self.service = service
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     private var loader = UIActivityIndicatorView(style: .medium)
 
     private let titleLabel: UILabel = {
@@ -33,6 +26,15 @@ class RateViewController: UIViewController {
         button.setTitle("Get Current Rate", for: .normal)
         return button
     }()
+
+    init(service: NetworkServiceProtocol) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private func setupLayout() {
         view.addSubview(titleLabel)
