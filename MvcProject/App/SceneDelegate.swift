@@ -22,9 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Session are new (see application:configurationForConnectingSceneSession instead).
 
         let networkService: NetworkServiceProtocol = NetworkService()
-
         guard let windowScene = scene as? UIWindowScene else { return }
-
         let window = UIWindow(windowScene: windowScene)
         let viewController = RateViewController(service: networkService)
         window.rootViewController = viewController
